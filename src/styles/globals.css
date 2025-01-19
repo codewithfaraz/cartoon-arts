@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-900 overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .tooltip {
+    @apply relative inline-block;
+  }
+
+  .tooltip:before {
+    @apply content-[attr(data-tooltip)] absolute bottom-full left-1/2 -translate-x-1/2 
+    px-3 py-1 rounded bg-gray-900 text-white text-sm whitespace-nowrap
+    opacity-0 transition-opacity duration-200;
+  }
+
+  .tooltip:hover:before {
+    @apply opacity-100;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
